@@ -7,5 +7,6 @@ modules = {
         dependsOn 'angular'
 
         resource url: 'js/articleCtl.js'
+        resource url: 'css/article.css'
     }
 }

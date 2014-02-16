@@ -4,7 +4,7 @@ var articleCtl = function ($scope, $http) {
     var ELASTICSEARCH_BASE_URL = 'http://localhost:9200';
 
     $scope.articles = [];
-    $scope.currentArticle;
+    $scope.currentArticle = {};
 
     $scope.sendArticle = function () {
         console.log("Preparing to send article with headline " + $scope.headline);
@@ -38,12 +38,16 @@ var articleCtl = function ($scope, $http) {
       for (var i = 0; i < $scope.articles.length; i++) {
           if ($scope.articles[i].id == articleId) {
               $scope.currentArticle = $scope.articles[i];
+
               return;
           }
       }
-      $scope.currentArticle = undefined;
+      $scope.currentArticle = {};
+    };
+
+    $scope.closeArticle = function () {
+        $scope.currentArticle = {};
     };
 
     $scope.findArticles();
-
 };

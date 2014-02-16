@@ -17,18 +17,25 @@
         <button ng-click="sendArticle()">Speichern</button>
 
     </div>
+
     <div>
         <h2>Show articles list</h2>
         <button ng-click="findArticles()">Update</button>
         <ul class="articles">
-            <li ng-repeat="article in articles"><a href="#" data-ng-click="showArticle(article.id)">{{article.headline}}</a></li>
+            <li ng-repeat="article in articles"><a href="#"
+                                                   data-ng-click="showArticle(article.id)">{{article.headline}}</a></li>
         </ul>
     </div>
 
-    <div id="article-container">
-        <h2>{{currentArticle.headline}}</h2>
+    <div id="article-container" ng-show="currentArticle.headline">
+        <div id="article-container-navigation">
+            <button id="close-article-container" ng-click="closeArticle()">X</button>
+        </div>
+        <div id="article-container-text">
+            <h2>{{currentArticle.headline}}</h2>
 
-        <p>{{currentArticle.text}}</p>
+            <p>{{currentArticle.text}}</p>
+        </div>
     </div>
 
 </div>
