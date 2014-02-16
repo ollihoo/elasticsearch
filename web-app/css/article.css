@@ -1,0 +1,33 @@
+#article-container {
+    padding: 12px;
+    border-width: 1px;
+    border-color: #009900;
+    border-style: solid;
+    background-color: #eee;
+    width: 400px;
+    border-radius: 20px;
+}
+
+#article-container-navigation {
+    position:relative;
+    width: 100%;
+}
+
+#close-article-container {
+    position: absolute;
+    right: 0;
+    color: #fff;
+    background-color: #aa0000;
+    border-radius: 7px;
+    border-style: solid;
+}
+
+div#article-container-text h2 {
+    color: #00aa00;
+    font-family: Verdana,sans-serif;
+}
+
+div#article-container-text  p {
+    color: #007700;
+    font-family: Verdana,sans-serif;
+}
