@@ -3,6 +3,14 @@ var articleCtl = function ($scope, $http) {
 
     var ELASTICSEARCH_BASE_URL = 'http://localhost:9200';
 
+    var onErrorHandler = function (data, status, headers, config) {
+        if (status == 404) {
+            console.log("No data found");
+        } else {
+            console.log("No connection to database");
+        }
+    };
+
     $scope.articles = [];
     $scope.currentArticle = {};
 
@@ -15,8 +23,8 @@ var articleCtl = function ($scope, $http) {
                 JSON.stringify(document)
             ).success(function (data, status, headers, config) {
                 $scope.messages = "Your article has been successfully saved. (" + data._id + ")";
-            });
-    }
+            }).error(onErrorHandler);
+    };
 
     $scope.findArticles = function () {
         $http.get(
@@ -30,7 +38,7 @@ var articleCtl = function ($scope, $http) {
                     currentObject.id = resultList[i]._id;
                     $scope.articles.push(currentObject);
                 }
-            });
+            }).error(onErrorHandler);
     };
 
     $scope.showArticle = function (articleId) {
