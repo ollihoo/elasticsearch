@@ -16,19 +16,21 @@
         <textarea ng-model="text"></textarea>
         <button ng-click="sendArticle()">Speichern</button>
 
-        <div>
-            <h2>{{headline}}</h2>
-
-            <p>{{text}}</p>
-        </div>
     </div>
     <div>
         <h2>Show articles list</h2>
         <button ng-click="findArticles()">Update</button>
         <ul class="articles">
-            <li ng-repeat="article in articles">{{article.headline}}</li>
+            <li ng-repeat="article in articles"><a href="#" data-ng-click="showArticle(article.id)">{{article.headline}}</a></li>
         </ul>
     </div>
+
+    <div id="article-container">
+        <h2>{{currentArticle.headline}}</h2>
+
+        <p>{{currentArticle.text}}</p>
+    </div>
+
 </div>
 
 </body>
