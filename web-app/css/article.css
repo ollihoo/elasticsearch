@@ -1,33 +1,36 @@
-#article-container {
-    padding: 12px;
-    border-width: 1px;
-    border-color: #009900;
-    border-style: solid;
-    background-color: #eee;
-    width: 400px;
-    border-radius: 20px;
+.cubecontainer {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    display: inline-block;
 }
 
-#article-container-navigation {
-    position:relative;
-    width: 100%;
-}
-
-#close-article-container {
+.perspective {
     position: absolute;
-    right: 0;
-    color: #fff;
-    background-color: #aa0000;
-    border-radius: 7px;
-    border-style: solid;
+    left: 100px;
+    top: 100px;
+    -webkit-perspective: 800px;
+    -webkit-perspective-origin: -50% -50%;
 }
 
-div#article-container-text h2 {
-    color: #00aa00;
-    font-family: Verdana,sans-serif;
+.cube {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
 }
 
-div#article-container-text  p {
-    color: #007700;
-    font-family: Verdana,sans-serif;
+.cube div {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: #eee;
+    box-shadow: inset 0 0 80px rgb(152, 255, 85);
 }
+
+.back { transform: rotateY(180deg) translateZ(200px); }
+.right { transform: rotateY(90deg) translateZ(200px); }
+.left { transform: rotateY(-90deg) translateZ(200px); }
+.top { transform: rotateX(-90deg) translateZ(200px); }
+.bottom { transform: rotateX(90deg) translateZ(200px); }
+.front { transform: translateZ(200px); }

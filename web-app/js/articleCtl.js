@@ -14,10 +14,24 @@ var articleCtl = function ($scope, $http) {
     $scope.articles = [];
     $scope.currentArticle = {};
 
-    $scope.sendArticle = function () {
-        console.log("Preparing to send article with headline " + $scope.headline);
+    var splitTextInParagraphs = function (input) {
+        var originalTexts = input.split("\n");
+        var resultTexts = [];
+        for (var i = 0; i < originalTexts.length; i++) {
+            if (originalTexts[i] != "") {
+                resultTexts.push(originalTexts[i]);
+            }
+        }
+        return resultTexts;
+    };
 
-        var document = { headline: $scope.headline, text: $scope.text };
+    $scope.sendArticle = function () {
+
+
+        var document = {
+            headline: $scope.headline,
+            text: splitTextInParagraphs($scope.text)
+        };
         $http.post(
                 ELASTICSEARCH_BASE_URL + "/documents/article/",
                 JSON.stringify(document)
@@ -33,7 +47,7 @@ var articleCtl = function ($scope, $http) {
                 $scope.articles = [];
                 var resultList = data.hits.hits;
 
-                for (var i=0; i < resultList.length; i++) {
+                for (var i = 0; i < resultList.length; i++) {
                     var currentObject = resultList[i]._source;
                     currentObject.id = resultList[i]._id;
                     $scope.articles.push(currentObject);
@@ -42,15 +56,18 @@ var articleCtl = function ($scope, $http) {
     };
 
     $scope.showArticle = function (articleId) {
-      console.log("Show article "+ articleId);
-      for (var i = 0; i < $scope.articles.length; i++) {
-          if ($scope.articles[i].id == articleId) {
-              $scope.currentArticle = $scope.articles[i];
+        console.log("Show article " + articleId);
+        for (var i = 0; i < $scope.articles.length; i++) {
+            if ($scope.articles[i].id == articleId) {
+                if (! ($scope.articles[i].text instanceof Array)) {
+                    $scope.articles[i].text = splitTextInParagraphs($scope.articles[i].text);
+                }
+                $scope.currentArticle = $scope.articles[i];
 
-              return;
-          }
-      }
-      $scope.currentArticle = {};
+                return;
+            }
+        }
+        $scope.currentArticle = {};
     };
 
     $scope.closeArticle = function () {
