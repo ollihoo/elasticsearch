@@ -1,36 +1,78 @@
 .cubecontainer {
     position: relative;
-    width: 500px;
-    height: 500px;
+    width: 100%;
+    height: 100%;
     display: inline-block;
 }
 
 .perspective {
     position: absolute;
-    left: 100px;
-    top: 100px;
+    left: 300px;
+    top: 300px;
     -webkit-perspective: 800px;
     -webkit-perspective-origin: -50% -50%;
 }
 
 .cube {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 500px;
+    height: 500px;
     transform-style: preserve-3d;
 }
 
-.cube div {
+.cube > div {
     position: absolute;
-    width: 400px;
-    height: 400px;
+    width: 600px;
+    height: 600px;
     background: #eee;
     box-shadow: inset 0 0 80px rgb(152, 255, 85);
+    opacity: 0.9;
 }
 
-.back { transform: rotateY(180deg) translateZ(200px); }
-.right { transform: rotateY(90deg) translateZ(200px); }
-.left { transform: rotateY(-90deg) translateZ(200px); }
-.top { transform: rotateX(-90deg) translateZ(200px); }
-.bottom { transform: rotateX(90deg) translateZ(200px); }
-.front { transform: translateZ(200px); }
+.back {
+    transform: rotateY(180deg) translateZ(300px);
+}
+
+.right {
+    transform: rotateY(90deg) translateZ(300px);
+}
+
+.left {
+    transform: rotateY(-90deg) translateZ(300px);
+}
+
+.top {
+    transform: rotateX(-90deg) translateZ(300px);
+}
+
+.bottom {
+    transform: rotateX(90deg) translateZ(300px);
+}
+
+.front {
+    transform: translateZ(300px);
+}
+
+div.mypicture1 {
+    background-image: url('/elasticsearch/static/images/schattenspiel.jpg');
+    background-size: 100% auto;
+}
+
+div.mypicture2 {
+    background-image: url('/elasticsearch/static/images/stamp-olli.jpg');
+    background-size: 100% auto;
+}
+
+div.working {
+    padding: 10px;
+    width: 100%;
+    height: 100%
+}
+
+#article-container-text {
+    padding: 20px;
+    font-family: Verdana, Geneva, Arial, sans-serif;
+    font-size: 12px;
+    overflow-y: scroll;
+    height: 87%;
+}

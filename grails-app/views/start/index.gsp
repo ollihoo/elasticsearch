@@ -13,21 +13,22 @@
     <input type="range" min="0" max="360" step="1" ng-model="z" />
     <div class="perspective">
         <div class="cube" style="transform: rotateX({{x}}deg) rotateY({{y}}deg) rotateZ({{z}}deg)">
-            <div id="new-article" class="front">
+            <div id="new-article" class="left">
                 <h2>Add new articles</h2>
 
-                <!--div>
+                <div class="working">
                     <p>{{messages}}</p>
 
                     <div><input type="text" ng-model="headline"></div>
 
                     <div><textarea ng-model="text"></textarea></div>
                     <button ng-click="sendArticle()">Speichern</button>
-                </div -->
+                </div>
             </div>
 
-            <div id="articlelist" class="back">
+            <div id="articlelist" class="front">
                 <h2>Show articles list</h2>
+                <input type="text" ng-model="searchQuery">
                 <button ng-click="findArticles()">Update</button>
                 <ul class="articles">
                     <li ng-repeat="article in articles"><a href="#"
@@ -36,7 +37,7 @@
                 </ul>
             </div>
 
-            <div id="article-container" class="top">
+            <div id="article-container" class="right">
                 <div id="article-container-navigation">
                     <button id="close-article-container" ng-click="closeArticle()">X</button>
                 </div>
@@ -48,11 +49,11 @@
                 </div>
             </div>
 
-            <div class="bottom"></div>
+            <div class="bottom mypicture2"></div>
 
-            <div class="right"></div>
+            <div class="top"></div>
 
-            <div class="left"></div>
+            <div class="back mypicture1"></div>
 
         </div>
     </div>

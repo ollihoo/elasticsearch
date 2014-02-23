@@ -6,13 +6,16 @@ var articleCtl = function ($scope, $http) {
     var onErrorHandler = function (data, status, headers, config) {
         if (status == 404) {
             console.log("No data found");
+            $scope.messages = "Keine Daten gefunden.";
         } else {
             console.log("No connection to database");
+            $scope.messages = "Keine Verbindung zur Datenbank";
         }
     };
 
     $scope.articles = [];
     $scope.currentArticle = {};
+    $scope.searchQuery = "";
 
     var splitTextInParagraphs = function (input) {
         var originalTexts = input.split("\n");
@@ -26,8 +29,6 @@ var articleCtl = function ($scope, $http) {
     };
 
     $scope.sendArticle = function () {
-
-
         var document = {
             headline: $scope.headline,
             text: splitTextInParagraphs($scope.text)
@@ -41,8 +42,15 @@ var articleCtl = function ($scope, $http) {
     };
 
     $scope.findArticles = function () {
+        var query;
+        if ($scope.searchQuery == "") {
+            query = "_exists_:headline"
+        } else {
+            query = $scope.searchQuery;
+        }
+        console.log(query);
         $http.get(
-                ELASTICSEARCH_BASE_URL + "/documents/article/_search?q=_exists_:headline"
+                ELASTICSEARCH_BASE_URL + "/documents/article/_search?q=" + query
             ).success(function (data, status, headers, config) {
                 $scope.articles = [];
                 var resultList = data.hits.hits;
