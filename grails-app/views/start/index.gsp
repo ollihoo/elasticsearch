@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<div ng-controller="articleCtl" class="cubecontainer" ng-init="x = 0;y=0; z=0;">
+<div ng-controller="articleCtl" class="cubecontainer" ng-init="x=10; y=45; z=0;">
     <input type="range" min="0" max="360" step="1" ng-model="x" />
     <input type="range" min="0" max="360" step="1" ng-model="y" />
     <input type="range" min="0" max="360" step="1" ng-model="z" />
