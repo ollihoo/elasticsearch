@@ -1,11 +1,11 @@
-Testing Elastic search
+# Testing Elastic search
 
 Originally I wanted to test elasticsearch by using interfaces offered by Grails.
 
 Honestly: by far too complicated. Instead, I directly connected elasticsearch by
 Javascript. To do this, I used AngularJS to build a single page.
 
-How to start:
+# How to start:
 * get elastic search
 * start it
 * get this project
@@ -16,4 +16,4 @@ On this page you will find a cube that can be rotated by the elements in the top
 You will find pages with images on it, one page to add articles, one to search and to click
 and one page to read articles.
 
-Have much fun!
+# Have much fun!
